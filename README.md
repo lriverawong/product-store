@@ -58,3 +58,10 @@ Run your seed file.
 ```php
 php artisan db:seed --class=ProductsTableSeeder
 ```
+
+### The Controller
+Create the controller
+```php
+php artisan make:controller ProductsController
+```
+
