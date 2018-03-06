@@ -15,11 +15,17 @@ class ProductsController extends Controller
     
     // show
     public function show(Product $product) {
-        return $product
+        return $product;
     }
 
     // store / creation
     public function store(Request $request) {
+        $this->validate($request, [
+            'title' => 'required|unique:products|max:255',
+            'description' => 'required',
+            'price' => 'integer',
+            'availability' => 'boolean',
+        ]);
         $product = Product::create($request->all());
         return response()->json($product, 201);
     }
