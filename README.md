@@ -72,6 +72,8 @@ You can setup model validations are the controller level. In the case of Product
 
 
 ## Part 2: Frontend React
+
+### Install React and Setup Basic Component
 Using React Preset Command (Laravel 5.5)
 ```
 php artisan preset react
@@ -85,6 +87,19 @@ npm run dev
 OR
 yarn run dev
 ```
+
+Run the watchs script to auto-compile the assets when any changes are detected
+```
+npm run watch
+```
+
+### Developing the React Application
+
+#### Display all products
+Core features:
+- fetch all products from the API (GET /api/products)
+- store the product data in its sate
+- display the product data
 
 
 
