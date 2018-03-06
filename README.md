@@ -4,6 +4,7 @@ A product listing applicationg using laravel API for the backend with a ReactJs 
 Based on the following tutorial (with key-notes summarized)
 
     https://code.tutsplus.com/tutorials/build-a-react-app-with-laravel-restful-backend-part-1-laravel-5-api--cms-29442
+    https://code.tutsplus.com/tutorials/build-a-react-app-with-laravel-backend-part-2-react--cms-29443
 
 ## Part 1: Backend Setup
 
@@ -101,5 +102,28 @@ Core features:
 - store the product data in its sate
 - display the product data
 
+Update `resources/assets/js/components/Main.js` to now render the <b>products</b>
 
+Note: 
+- We're initializing the state of products to an empty array in the constructor. 
+- Once component mounts we use `fetch()` to retrieve the products from `/api/products` and store it in the state
+- Render method sets up the UI
 
+#### Displaying product data
+Core features:
+- track the clicked product and set it with an initial `null` value
+- when a product is clicked then update the state of the current product
+- list the product details on the right and until a certain product is clicked then display - "No product selected"
+
+Update `resources/assets/js/components/Main.js` to how handle clicking of a <b>product</b>
+
+Now to display the product data, we can either render it insdie the Main component or create a new component. A component called `Product` is created and the `Main` component pases its state as props. 
+
+## Key points to look-at and note:
+- Laravel
+    - the setting up of API endpoints
+    - CRUD for a user with API endpoints
+- React
+    - => function
+    - mapping/lambda functions
+    - onClick()
