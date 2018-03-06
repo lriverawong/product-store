@@ -69,3 +69,22 @@ php artisan make:controller ProductsController
 By default, Laravel uses `NotFoundHTTPException` to handle 404 errors. You can return a JSON response if you so choose by modifying <b>app/Exceptions/Handler.php</b>
 
 You can setup model validations are the controller level. In the case of Products, you can modify the file: `app/HTTP/Controllers/ProductsController.php`
+
+
+## Part 2: Frontend React
+Using React Preset Command (Laravel 5.5)
+```
+php artisan preset react
+npm install && npm run dev
+```
+Update `resources/assets/js/component/Main.js`, `resources/assets/js/app.js`, and `resources/views/welcome.blade.php`
+
+Recompile assets in public dir
+```
+npm run dev
+OR
+yarn run dev
+```
+
+
+
