@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Product from './Product';
+import AddProduct from './AddProduct';
 
 /* An example React component */
 class Main extends Component {
@@ -14,6 +15,8 @@ class Main extends Component {
             // keep track of currently selected product
             currentProduct: null
         }
+        // binding for AddProduct
+        this.handleAddProduct = this.handleAddProduct.bind(this);
     }//end constructor
 
     /** 
@@ -59,44 +62,64 @@ class Main extends Component {
         this.setState({currentProduct:product});
     }
 
+    /**
+     * Hosts the code for making a POST request to the server. If update successful then update state.
+     */
+    handleAddProduct(product) {
+        product.price = Number(product.price);
+        /* fetch API for post request */
+        fetch('api/products', {
+            method: 'post',
+            /* headers are important */
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'   
+            },
+            body: JSON.stringify(product)
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            // update the state of products and currentProduct
+            this.setState((prevState) => ({
+                products: prevState.products.concat(data),
+                currentProduct: data
+            }))
+        })
+    }
+
     render () {
         const mainDivStyle =  {
             display: "flex",
             flexDirection: "row"
         }
         
-        const prodListStyle = {
+        const divStyle = {
+           
             justifyContent: "flex-start",
             padding: '10px',
             width: '35%',
             background: '#f0f0f0',
             padding: '20px 20px 20px 20px',
             margin: '30px 10px 10px 30px'
+            
         }
-
-        const prodDetailsStyle = {
-            // justifyContent: "flex-start",
-            padding: '10px',
-            background: '#c8d9ec',
-            padding: '20px 20px 20px 20px',
-            margin: '30px 10px 10px 30px'
-        }
-
+    
         return (
             <div>
-                <div style={mainDivStyle}>
-                    <div style={prodListStyle}>
-                        <h2>All Products</h2>
+                <div style= {mainDivStyle}>
+                    <div style={divStyle}>
+                        <h3> All products </h3>
                         <ul>
                             { this.renderProducts() }
-                        </ul>
-                    </div>
-
-                    <div style={prodDetailsStyle}>
-                        <Product product={this.state.currentProduct} />
-                    </div>
+                        </ul> 
+                    </div> 
+                    <Product product={this.state.currentProduct} />
+                    <AddProduct onAdd={this.handleAddProduct} /> 
                 </div>
             </div>
+          
         );
     }//end render()
 }

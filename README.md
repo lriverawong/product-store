@@ -119,6 +119,18 @@ Update `resources/assets/js/components/Main.js` to how handle clicking of a <b>p
 
 Now to display the product data, we can either render it insdie the Main component or create a new component. A component called `Product` is created and the `Main` component pases its state as props. 
 
+#### Adding a new product
+Core features:
+- a new stateful component that renders the UI for an input form - the state holds the form data
+- on submit, the child component passes the state to the Main component using a callback
+ - Main component has method to handle logic for starting a POST request
+    - whenr receive response - Main component's state is updated
+
+Create `resources/assets/js/component/AddProduct.js` and configure it.
+
+Update `resources/assets/js/component/Main.js` by adding in the callback function handler from AddProduct.
+
+
 ## Key points to look-at and note:
 - Laravel
     - the setting up of API endpoints
@@ -127,3 +139,7 @@ Now to display the product data, we can either render it insdie the Main compone
     - => function
     - mapping/lambda functions
     - onClick()
+    - binding methods for (this)
+    - prevState
+- Parts missing from original guide
+    - add the line `import Product from './Product';` to `Main.js` else you will get a Product component not found error

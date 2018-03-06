@@ -15,7 +15,7 @@ const Product = ({product}) => {
     if (!product) {
         return (
             <div style={divStyle}>
-                <h2>Product Details</h2>
+                {/* <h2>Product Details</h2> */}
                 <p>Product doesn't exist </p>
             </div>
         )
@@ -24,11 +24,11 @@ const Product = ({product}) => {
     // else, display the product data
     return(
         <div style={divStyle}>
-            <h2> Product Details </h2>
-            <h3> {product.title} </h3>
+            {/* <h2> Product Details </h2> */}
+            <h2> {product.title} </h2>
             <p> {product.description} </p>
             <h3> Status {product.availability ? 'Available' : 'Out of stock'} </h3>
-            <h3> Price: {product.price} </h3>
+            <h3> Price : {product.price} </h3>
         </div>
     )
 }
